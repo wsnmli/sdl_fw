@@ -11,6 +11,8 @@ class wangTile {};
 
 
 int main() {
+    Vector centre(WIDTH/2, HEIGHT/2);
+    
     Framework fw("Wang Tiles", WIDTH, HEIGHT);
     SDL_Event event;
     fw.set_offset(0, 0);
@@ -24,6 +26,8 @@ int main() {
         fw.blank();
         fw.draw_line(Vector(0,0), Vector(WIDTH,HEIGHT));
         // reneder Wang tiles
+        fw.draw_rotated_rectangle(centre.x, centre.y, 10, 10, 45);
+
         fw.render();
     }
 }
