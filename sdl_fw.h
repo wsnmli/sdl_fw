@@ -3,6 +3,8 @@
 
 #include "vector2d.h"
 
+#define FONT_PATH "/usr/share/fonts/truetype/freefont/FreeSans.ttf"
+
 using namespace std;
 class Framework {
     SDL_Renderer *renderer;      // Pointer for the renderer
@@ -10,6 +12,10 @@ class Framework {
 
     int r, g, b;    // used for background colours
 
+    // text stuff 
+    TTF_Font *font;
+    SDL_Color textColor           = { 0x00, 0x00, 0x00, 0xFF };
+    SDL_Color textBackgroundColor = { 0xFF, 0xFF, 0xFF, 0xFF };
 
 public:
     int height;     // Height of the window
@@ -22,10 +28,11 @@ public:
 
     Framework(const char* title, int width_, int height_): height(height_), width(width_) {
         // init font
-        char* font_path;
-        font_path = "/usr/share/fonts/TTF/Gargi-1.2b.ttf";
         TTF_Init();
+        font = TTF_OpenFont(FONT_PATH, 12);
+        if (!font) cout << "Enable to load font " << FONT_PATH << endl;
 
+        // init sdl
         SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);       // Initializing SDL as Video
         //SDL_CreateWindowAndRenderer(width, height, 0, &window, &renderer);
         window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED,
@@ -43,12 +50,36 @@ public:
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
+
+        TTF_Quit();
     }
 
 
     void set_offset(int x, int y) {
         xoff = x; 
         yoff = y;
+    }
+
+    void draw_text(char* t, int x, int y) {
+        SDL_Rect textRect;
+        SDL_Texture *text = NULL;
+        SDL_Surface *textSurface = TTF_RenderText_Shaded(font, t, textColor, textBackgroundColor);
+        if(!textSurface) {
+            cout << "Unable to render text surface!" << endl;
+        } else {text = SDL_CreateTextureFromSurface(renderer, textSurface);}
+        if (!text) { cout << "ERROR EROORS" << endl;}
+
+        // Get text dimensions
+        textRect.w = textSurface->w;
+        textRect.h = textSurface->h;
+
+        // set postion
+        textRect.x = x-7;
+        textRect.y = y-5;
+        
+        SDL_FreeSurface(textSurface);
+
+        SDL_RenderCopy(renderer, text, NULL, &textRect);
     }
 
     // drawing stuff 

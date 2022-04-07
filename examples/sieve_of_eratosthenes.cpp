@@ -25,6 +25,10 @@ public:
     void show() {
         a->draw_black_rectangle(x,y,width,height);
         a->draw_rectangle(x, y, width-2, height-2);
+        // convert value to string
+        char str[3];
+        sprintf(str, "%d", value);
+        a->draw_text(str, x, y);
     }
 };
 
