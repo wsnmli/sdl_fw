@@ -1,4 +1,4 @@
-//g++ main.cpp -lSDL2 -lSDL2_ttf  && ./a.out 
+//  g++ wang.cpp -lSDL2 -lSDL2_ttf  && ./a.out 
 #include "../../sdl_fw.h"
 
 #define WIDTH (700)
