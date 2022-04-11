@@ -17,17 +17,24 @@ public:
         M.resize(i, vector<int>(j));
     }
 
-    void getInput() {
+    int getInput() {
+        // returns 1 if players wants to exit
+        cout << "Get input" << endl;
         SDL_Event event;
         int mltx = 0, mlty = 0;
 
         SDL_PumpEvents();
 
         if (SDL_GetMouseState(&mltx, &mlty) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-            if (mltx * 2 < WIDTH) { // mouse on left half
-                M[mltx][mlty];
+                M[mltx][mlty] = 1;
+        }
+        // check if player wants to exit
+        while(SDL_PollEvent(&event)) {
+            if (event.key.keysym.sym == SDLK_ESCAPE) {
+                return 1;
             }
         }
+        return 0;
     }
     void draw() {}
 };
@@ -40,9 +47,10 @@ int main() {
     Canvas canvas(fw, WIDTH, HEIGHT);
 
     //game loop
-    while(!(fw.event.type == SDL_QUIT)) {
+    int done = 0;
+    while(!done) {
         fw.blank();
-        canvas.getInput();
+        done = canvas.getInput();
         canvas.draw();
         fw.render();
     }
