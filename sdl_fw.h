@@ -75,7 +75,7 @@ public:
         }
     }
     void draw_rotated_rectangle(int x, int y, int w, int h, int angle) {
-        
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     }
 
     void draw_black_rectangle(int centre_x, int centre_y,
