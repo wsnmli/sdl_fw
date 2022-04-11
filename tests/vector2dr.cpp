@@ -7,5 +7,5 @@ using namespace std;
 int main() {
     Vector z(0., 0.), a(1., 1.), b(2., 2.) ;
     assert(a*0 == z); assert(0*a == z);
-    assert(a*2 == b);
+    assert(a*2 == b); assert(a+a == b);
 }
