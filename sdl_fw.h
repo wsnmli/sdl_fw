@@ -34,7 +34,9 @@ public:
         // init font
         TTF_Init();
         font = TTF_OpenFont(FONT_PATH, 12);
-        if (!font) cout << "Enable to load font " << FONT_PATH << endl;
+        if (!font) {cout << "Unable to load font " << FONT_PATH << endl;
+            font = TTF_OpenFont("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 12); // try different font
+        }
 
         // init sdl
         SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);       // Initializing SDL as Video
