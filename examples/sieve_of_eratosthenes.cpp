@@ -32,7 +32,6 @@ public:
 int main() {
     Framework fw("Sieve of Eratosthenes", WIDTH, HEIGHT);
     
-    fw.set_offset(0, 0);
     fw.set_background_colour(0, 0, 255);
 
     // add squares

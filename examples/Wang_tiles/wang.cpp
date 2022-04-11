@@ -12,7 +12,7 @@ int main() {
     Vector centre(WIDTH/2, HEIGHT/2);
     
     Framework fw("Wang Tiles", WIDTH, HEIGHT);
-    SDL_Event event;
+
     fw.set_offset(0, 0);
     fw.set_background_colour(0, 0, 255);
 
@@ -20,7 +20,7 @@ int main() {
 
     //game loop
     while(!(event.type == SDL_QUIT)) {      SDL_Delay(20);
-        SDL_PollEvent(&event);
+        SDL_PollEvent(&fw.event);
         fw.blank();
         fw.draw_line(Vector(0,0), Vector(WIDTH,HEIGHT));
         // reneder Wang tiles

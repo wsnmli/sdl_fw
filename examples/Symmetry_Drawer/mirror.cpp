@@ -35,13 +35,12 @@ public:
 int main() {
     // init sdl
     Framework fw("Mirror Draw", WIDTH, HEIGHT);
-    SDL_Event event;
 
     // add canvas
     Canvas canvas(fw, WIDTH, HEIGHT);
 
     //game loop
-    while(!(event.type == SDL_QUIT)) {
+    while(!(fw.event.type == SDL_QUIT)) {
         fw.blank();
         canvas.getInput();
         canvas.draw();
