@@ -21,6 +21,8 @@ class Framework {
     SDL_Color textBackgroundColor = { 0xFF, 0xFF, 0xFF, 0xFF };
 
 public:
+    SDL_Event event;
+    
     int height;     // Height of the window
     int width;      // Width of the window
 

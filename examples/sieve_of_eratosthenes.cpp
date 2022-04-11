@@ -31,7 +31,7 @@ public:
 
 int main() {
     Framework fw("Sieve of Eratosthenes", WIDTH, HEIGHT);
-    SDL_Event event;
+    
     fw.set_offset(0, 0);
     fw.set_background_colour(0, 0, 255);
 
@@ -46,9 +46,9 @@ int main() {
     }
 
     // game loop
-    while(!(event.type == SDL_QUIT)) {
+    while(!(fw.event.type == SDL_QUIT)) {
         //SDL_Delay(20);
-        SDL_PollEvent(&event);
+        SDL_PollEvent(&fw.event);
         fw.blank();
 
         // render squares 
