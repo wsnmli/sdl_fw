@@ -28,7 +28,6 @@ public:
 
     int xoff;       // number of pixels to offset drawing stuff
     int yoff;
-
     
 
     Framework(const char* title, int width_, int height_): height(height_), width(width_) {
@@ -39,7 +38,6 @@ public:
 
         // init sdl
         SDL_Init(SDL_INIT_TIMER | SDL_INIT_VIDEO | SDL_INIT_JOYSTICK);       // Initializing SDL as Video
-        //SDL_CreateWindowAndRenderer(width, height, 0, &window, &renderer);
         window = SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED,
                         SDL_WINDOWPOS_UNDEFINED, width_, height, 0);
         renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -233,11 +231,6 @@ public:
     void render() {
         SDL_RenderPresent(renderer);
     }
-
-    void draw_black_text(int x, int y, string w, int size) {
-        //TTF_Font* Sans = TTF_OpenFont("Sans.ttf", size);
-    }
-    void draw_white_text(int x, int y, string w, int size) {}
 
 };
 
