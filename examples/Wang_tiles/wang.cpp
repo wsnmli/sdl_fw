@@ -1,8 +1,6 @@
 //  g++ wang.cpp -lSDL2 -lSDL2_ttf  && ./a.out 
 #include "../../sdl_fw.h"
 
-#define WIDTH (700)
-#define HEIGHT (800)
 #define NUMBER (16)   // number of wang tiles
 
 using namespace std;

@@ -5,6 +5,9 @@
 
 #define FONT_PATH "/usr/share/fonts/truetype/freefont/FreeSans.ttf"
 
+#define WIDTH (700)
+#define HEIGHT (800)
+
 using namespace std;
 class Framework {
     SDL_Renderer *renderer;      // Pointer for the renderer
