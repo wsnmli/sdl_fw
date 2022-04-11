@@ -1,5 +1,6 @@
 //  g++ mirror.cpp -lSDL2 -lSDL2_ttf  && ./a.out 
 #include "../../sdl_fw.h"
+#include <vector>
 using namespace std;
 
 #define WIDTH (700)
@@ -7,9 +8,13 @@ using namespace std;
 
 class Canvas {
     Framework* fw;
-public:   
+public: 
+    vector<vector<int>> M;
+    //int m = number of rows, n = number of columns;
+
+  
     Canvas(Framework& fw, int i, int j) {
-        int a[i/2][j];
+        M.resize(i, vector<int>(j));
     }
 
     void getInput() {
@@ -20,7 +25,7 @@ public:
 
         if (SDL_GetMouseState(&mltx, &mlty) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
             if (mltx * 2 < WIDTH) { // mouse on left half
-                a[mltx][mlty];
+                M[mltx][mlty];
             }
         }
     }

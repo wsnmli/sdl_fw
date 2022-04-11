@@ -2,9 +2,6 @@
 #include "../sdl_fw.h"
 #include "isprime.h"
 
-#define WIDTH (700)
-#define HEIGHT (800)
-
 #define NUMBERS (60)    //  how many
 
 class Square {
