@@ -45,8 +45,7 @@ public:
         return tmp;
     }
     void operator+= (Vector z) {
-        x += z.x;
-        y += z.y;
+        *this = *this + z;
     }
     Vector operator- (Vector z) {
         Vector tmp;
@@ -55,8 +54,7 @@ public:
         return tmp;
     }
     void operator-= (Vector z) {
-        x -= z.x;
-        y -= z.y;
+        *this = *this - z;
     }
     Vector operator* (float c) {
         Vector tmp;
