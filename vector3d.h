@@ -15,6 +15,8 @@ class Vector3 { public:
     Vector3() {
         x = 0; y = 0; z = 0;
     }
+
+    // math operators
     Vector3 operator* (float c) {
         Vector3 tmp;
         tmp.x = c * x;
@@ -37,13 +39,18 @@ class Vector3 { public:
         tmp.z = z - a.z;
         return tmp;
     }
+
+    // combined assignment and math operatro
     void operator-= (Vector3 z) {
         *this = *this - z;
     }
 
-void operator+= (Vector3 z) {
-    *this = *this + z;
-}
+    void operator+= (Vector3 z) {
+        *this = *this + z;
+    }
+
+    // printing
+    friend ostream& operator<<(ostream& os, const Vector3& x);
 };
 
 int operator==(Vector3 a, Vector3 b) {
@@ -54,6 +61,10 @@ Vector3 operator*(float a, Vector3 b) {
     return b*a;
 }
 
+ostream& operator<<(ostream& os, const Vector3& x) {
+    os << "(" << x.x << ", " << x.y << ", " << x.z << ")";
+    return os;
+}
 
 
 #endif
