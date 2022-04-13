@@ -3,9 +3,6 @@
 #include <vector>
 using namespace std;
 
-#define WIDTH (700)
-#define HEIGHT (800)
-
 class Canvas {
     Framework* fw;
 public: 
