@@ -9,7 +9,7 @@
 #define HEIGHT (800)
 
 using namespace std;
-class Framework {
+class Framework { public:
     SDL_Renderer *renderer;      // Pointer for the renderer
     SDL_Window *window;      // Pointer for the window
 
@@ -20,7 +20,6 @@ class Framework {
     SDL_Color textColor           = { 0x00, 0x00, 0x00, 0xFF };
     SDL_Color textBackgroundColor = { 0xFF, 0xFF, 0xFF, 0xFF };
 
-public:
     SDL_Event event;
     
     int height;     // Height of the window

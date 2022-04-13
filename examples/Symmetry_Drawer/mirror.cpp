@@ -3,26 +3,31 @@
 #include <vector>
 using namespace std;
 
+#define WIDTH (100)
+#define HEIGHT (100)
+
 class Canvas {
     Framework* fw;
 public: 
-    vector<vector<int>> M;
-    //int m = number of rows, n = number of columns;
-
+    int** M;
+    int numCol, numRow;
   
     Canvas(Framework& fw, int i, int j) {
-        M.resize(i, vector<int>(j));
+        numCol = i; numRow = j;
+        
+        M = new int*[numRow];
+	    for (int row = 0; row < numRow; row++)
+		    M[row] = new int[numCol];
     }
 
     int getInput() {
         // returns 1 if players wants to exit
-        cout << "Get input" << endl;
         SDL_Event event;
         int mltx = 0, mlty = 0;
 
         SDL_PumpEvents();
 
-        if (SDL_GetMouseState(&mltx, &mlty) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
+        if (SDL_GetMouseState(&mltx, &mlty) && SDL_BUTTON(SDL_BUTTON_LEFT)) {
                 M[mltx][mlty] = 1;
         }
         // check if player wants to exit
@@ -33,7 +38,13 @@ public:
         }
         return 0;
     }
-    void draw() {}
+    void draw() {
+        for (int i = 0; i < numCol; i++) {
+            for (int j = 0; j < numRow; j++) {
+                if (M[i][j] == 1) SDL_RenderDrawPoint(fw->renderer, i, j);
+            }
+        }
+    }
 };
 
 int main() {
