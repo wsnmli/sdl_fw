@@ -15,8 +15,14 @@ class Vertex :public Vector3 { public:
 class Cube { public:
     vector<Vertex> vertices;
     Cube() {
-        for (int i=0; i<16; i++) {
-            vertices.push_back(Vertex(0,0,0));
+        for (int i=0; i<2; i++) {
+            for (int j=0; j<2; j++) {
+                for (int k=0; k<2; k++) {
+                    if (i!=j && j!=k && i!=k) {
+                        vertices.push_back(Vertex(i, j, k));
+                    }
+                }
+            }
         }
     }
 };
@@ -33,9 +39,21 @@ public:
     }
     
     int getinput() {
-        // return 1 if player wants to quit
-        
-        return 0;
+        // return done = 1 if player wants to quit
+        int done = 0;
+        while(SDL_PollEvent(&fw->event)) {
+        switch(fw->event.type) {
+            case SDL_KEYDOWN:
+            {
+                switch(fw->event.key.keysym.sym) {
+                    case SDLK_ESCAPE:
+                        done = 1;
+                    break;
+                }
+            } return done;
+        }
+    }
+        return done;
     }
     void draw() {
         fw->blank();
