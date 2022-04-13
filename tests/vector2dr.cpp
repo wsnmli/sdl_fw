@@ -11,4 +11,9 @@ int main() {
     assert(a*2 == b); assert(a+a == b);
     assert(b-a==a);
     // +=, -=, *=, /=
+
+    z+=a;
+    assert(z==a);
+    z-=a;
+    assert(z==Vector(0,0));
 }
