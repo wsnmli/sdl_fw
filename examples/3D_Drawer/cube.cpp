@@ -18,9 +18,7 @@ class Cube { public:
         for (int i=0; i<2; i++) {
             for (int j=0; j<2; j++) {
                 for (int k=0; k<2; k++) {
-                    if (i!=j && j!=k && i!=k) {
-                        vertices.push_back(Vertex(i, j, k));
-                    }
+                    vertices.push_back(Vertex(i, j, k));
                 }
             }
         }
@@ -67,6 +65,7 @@ public:
 int main() { 
     Framework fw("3D Cube", WIDTH, HEIGHT);
     Scene scene(fw);
+
     int done = 0;
     while(!done) {
         done = scene.getinput();
