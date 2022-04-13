@@ -9,11 +9,23 @@ class Vertex :public Vector3 { public:
     Vertex(float i, float j, float k) {
         x = i; y = j; z = k;
     }
+    Vertex() {
+        x=0; y=0; z=0;
+    }
     void draw() {}
+};
+
+class Edge {
+    Vertex from, to;
+public:
+    Edge(Vertex a, Vertex b) {
+        from = a; to = b;
+    }
 };
 
 class Cube { public:
     vector<Vertex> vertices;
+    vector<Edge> edges;
     Cube() {
         for (int i=0; i<2; i++) {
             for (int j=0; j<2; j++) {
