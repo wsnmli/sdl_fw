@@ -10,14 +10,11 @@ class Entity { public:
 };
 
 class Bubble :public Entity { public:
-    Bubble(float x, float y) {
-        p.x = x; p.y = y;
-    }
+    using Entity::Entity;
 };
 
-class Player{ public:
-    Vector p;       //postion
-    Vector a;       // accelaration
+class Player :public Entity{ public:
+    using Entity::Entity;
 };
 
 int main() {
