@@ -6,6 +6,7 @@ class Entity { public:
     Vector a;       // accelaration
     Entity(float x, float y) {
         p.x = x; p.y = y;
+        a = Vector(0, 0);
     }
 };
 
