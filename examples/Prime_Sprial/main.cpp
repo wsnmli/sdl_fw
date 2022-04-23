@@ -36,8 +36,6 @@ public:
 };
 
 int main() {
-    
-    cout<< isprime(4);
     Framework fw("Prime Spiral", WIDTH, HEIGHT);
     
     Square* squares = (Square*) malloc(sizeof(Square) * NUMBERS);
