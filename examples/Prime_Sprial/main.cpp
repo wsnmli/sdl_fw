@@ -25,21 +25,25 @@ public:
 
     void show() {
         a->draw_black_rectangle(x,y,width,height);
-        a->draw_rectangle(x, y, width-2, height-2);
-        // convert value to string
-        char str[3];
-        sprintf(str, "%d", value);
-        a->draw_text(str, x, y);
+        if ( isprime(value) ) {
+            a->draw_rectangle(x, y, width-2, height-2);
+            // convert value to string
+            char str[3];
+            sprintf(str, "%d", value);
+            a->draw_text(str, x, y);
+        }
     }
 };
 
 int main() {
+    
+    cout<< isprime(4);
     Framework fw("Prime Spiral", WIDTH, HEIGHT);
     
     Square* squares = (Square*) malloc(sizeof(Square) * NUMBERS);
 
     int integer = -1;
-    while(!(fw.event.type == SDL_QUIT)) {      //SDL_Delay(20);
+    while(!(fw.event.type == SDL_QUIT)) {      SDL_Delay(100);
         SDL_PollEvent(&fw.event);
         
         integer++;
@@ -49,14 +53,16 @@ int main() {
             squares[integer].width = 20;
             squares[integer].height = 20;
             squares[integer].primep = isprime(integer + 1);
-            squares[integer].x = WIDTH/2;
+            squares[integer].x = WIDTH/2 + (squares[0].width) * integer;
             squares[integer].y = HEIGHT/2;
         }
         
         fw.blank();
         //draw squares
-        for (int i=0; i<integer; i++) {
+        for (int i=0; i<NUMBERS; i++) {
+            if (i < integer) {
             squares[i].show();
+            }
         }
 
         fw.render();
