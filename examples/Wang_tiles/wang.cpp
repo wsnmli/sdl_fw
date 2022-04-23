@@ -19,7 +19,7 @@ int main() {
     // wang tiles
 
     //game loop
-    while(!(event.type == SDL_QUIT)) {      SDL_Delay(20);
+    while(!(fw.event.type == SDL_QUIT)) {      SDL_Delay(20);
         SDL_PollEvent(&fw.event);
         fw.blank();
         fw.draw_line(Vector(0,0), Vector(WIDTH,HEIGHT));
