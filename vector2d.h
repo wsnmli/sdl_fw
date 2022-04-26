@@ -89,6 +89,11 @@ int operator!=(Vector a, Vector b) {
     return !(a==b);
 }
 
+Vector operator/=(Vector a, float b) {
+    a.div(b);
+    return a;
+}
+
 
 float distance(Vector a, Vector b) {
     float dx = a.x - b.x;
