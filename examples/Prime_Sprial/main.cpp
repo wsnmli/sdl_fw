@@ -3,7 +3,7 @@
 #include "../../sdl_fw.h"
 #include "../isprime.h"
 
-#define NUMBERS (60)    //  how many
+#define NUMBERS (16000)    //  how many
 
 
 using namespace std;
@@ -43,14 +43,24 @@ int main() {
     int integer = -1;
     while(!(fw.event.type == SDL_QUIT)) {      SDL_Delay(100);
         SDL_PollEvent(&fw.event);
-        
-        integer++;
-        if (integer < NUMBERS) {
+        if (integer < NUMBERS) integer++;
+        if (integer == 0) {
+            squares[0] = Square(fw);
+            squares[integer].value = integer + 1;
+            squares[integer].width = 20;
+            squares[integer].height = 20;
+            squares[integer].primep = 1;
+
+            squares[integer].x = WIDTH/2;
+            squares[integer].y = HEIGHT/2;
+
+        } else if (integer < NUMBERS) {
             squares[integer] = Square(fw);
             squares[integer].value = integer + 1;
             squares[integer].width = 20;
             squares[integer].height = 20;
             squares[integer].primep = isprime(integer + 1);
+            
             squares[integer].x = WIDTH/2 + (squares[0].width) * integer;
             squares[integer].y = HEIGHT/2;
         }
