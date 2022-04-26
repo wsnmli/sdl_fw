@@ -5,15 +5,16 @@ class Object {
 public:
     Vector s, v, a; // displacement, velocity, acceleration
     float r, rs;    // rotaion rate, rotation acceleration
-    
+    float m;    // mass
+
     Object(Vector x) {
         s = x;
         r = 0.; rs = 0.;
+        m = 1;
     }
     Object(float x, float y) {
-        s = Vector(x, y);
-        r = 0., rs = 0.;
-    }
+        Object(Vector(x, y));
+    };
 
     void update(float t) {
         s += t*v;
