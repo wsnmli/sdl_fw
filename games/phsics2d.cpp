@@ -16,6 +16,13 @@ public:
         Object(Vector(x, y));
     };
 
+    void applyTransForce(Vector p) {
+        p /= m;
+        a += p;
+    }
+
+    void applyRotateForce(float F);
+
     void update(float t) {
         s += t*v;
         v += t*v;
