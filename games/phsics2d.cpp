@@ -1,6 +1,10 @@
 #include "../vector2d.h"
 using namespace std;
 
+#define WIDTH (1000)
+#define HEIGHT (1000)
+
+
 class Object {
 public:
     Vector s, v, a; // displacement, velocity, acceleration
@@ -16,6 +20,9 @@ public:
         Object(Vector(x, y));
     };
 
+    void set_mass(float t) {m = t;}
+    
+    
     void applyTransForce(Vector p) {
         p /= m;
         a += p;
@@ -35,6 +42,8 @@ public:
 class Ball :public Object {
 public:
     using Object::Object;
+    float radius;
+    
     void draw();
     
 };
@@ -42,6 +51,10 @@ public:
 class Square :public Object {
 public:
     using Object::Object;
+
+    float width, height;
+    float theta;        //  angle rotated counter clockwise in radians
+    
     void draw();
 
 };
@@ -50,6 +63,10 @@ int main() {
     cout << "H";
     Ball ball(400, 500);
     ball.update(0.1);
+
+    Square square(WIDTH/2, HEIGHT/2);
+    square.set_mass(16);
+
 
 
 }
