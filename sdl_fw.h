@@ -164,6 +164,19 @@ class Framework { public:
 
     }
 
+    void circle(Vector centre, int radius) {
+        // draw a circle with no filling in
+        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+        // Drawing circle
+        for(int x=centre.x-radius; x<=centre.x+radius; x++) {
+            for(int y=centre.y-radius; y<=centre.y+radius; y++) {
+                if((pow(centre.y-y,2) + pow(centre.x-x,2)) <= pow(radius,2)) {
+                    SDL_RenderDrawPoint(renderer, x+xoff, y+yoff);
+                }
+            }
+        }
+    }
+
 
 
     void draw_line(Vector start, Vector end) {
