@@ -2,7 +2,7 @@
 
 #include "../../sdl_fw.h"
 
-void fractual(Framework fw, Vector centre) {
+void fractual(Framework fw, Vector centre, int iteration, int size) {
     
 }
 
