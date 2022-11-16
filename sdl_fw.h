@@ -1,3 +1,6 @@
+#ifndef SDL_FW
+#define SDL_FW
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
@@ -264,3 +267,6 @@ float r3x(SDL_Joystick* joy1) {
 float r3y(SDL_Joystick* joy1) {
     return SDL_JoystickGetAxis(joy1, 3);
 }
+
+
+#endif
